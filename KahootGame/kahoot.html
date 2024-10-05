@@ -270,6 +270,14 @@
                 if (QuestionCount <= 10) {
                     loadQuestion();
                 }
+
+                else {
+                    document.getElementById("Question").innerHTML = "¡Felicidades!, Tu úntaje es: " + score + " ❂";
+                    document.getElementById("ans0").style.display = "none";
+                    document.getElementById("ans1").style.display = "none";
+                    document.getElementById("ans2").style.display = "none";
+                    document.getElementById("ans3").style.display = "none";
+                }
             }
 
         </script>
