@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start</title>
+
+        <style>
+            body{
+                background-image: url(sources/kahootlog.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .Main{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .UsuaContainer{
+                background: linear-gradient(to right, rgb(12, 12, 113), rgb(42, 42, 161));
+                display: flex;
+                padding: 20px;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 15%;
+            }
+
+            .UsuaContainer label{
+                font-size: 40px;
+                color: white;
+            }
+
+            .UsuaContainer input{
+                font-size: 30px;
+                width: 500px;
+                height: 40px;
+                text-align: center;
+            }
+
+            .Container{
+                margin-top: 12%;
+            }
+
+            .Container a {
+                margin: 0 10px; /* Add horizontal margin between the buttons */
+            }
+
+            .Container button{
+                background: linear-gradient(to right, rgb(12, 12, 113), rgb(42, 42, 161));
+                color: white;
+                font-size: 32px;
+                width: 500px;
+                height: 100px;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            }
+
+            button:hover{
+                transform: scale(1.1);
+                transition: 0.5s;
+            }
+        </style>
+
+        <script>
+            function SaveName(){
+                var Name = document.getElementById("Name").value;
+                localStorage.setItem("Name", Name);
+
+                if (Name == null || Name == ""){
+                    alert("Por favor, ingrese un nombre");
+                    window.location.href = "Index.html";    
+                }
+
+                else{
+                    window.location.href = "";
+                }
+            }
+
+
+        </script>
+    </head>
+
+    <body>
+        <div class="Main">
+            <div class="UsuaContainer">
+                <label for="Name">Ingrese su nombre</label><br>
+                <input type="text" id="Name">
+            </div>
+            <div class="Container">
+                <button type="button" onclick="SaveName()">Jugar</button>
+            </div>
+        </div>
+    </body>
+</html>
