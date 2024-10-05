@@ -16,7 +16,7 @@
                 justify-content: center;
                 display: flex;
                 flex-direction: column;
-                margin-top: -7%;
+                margin-top: -4%;
             }
 
             .Container{
@@ -28,25 +28,22 @@
             }
 
             .QuestionBlock{
-                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                background-color: white;
                 width: auto;
                 height: auto;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 text-align: center;
-                color: white;
                 flex: 0 0 100%;
                 margin-top: 7%;
             }
 
             .QuestionBlock p{
-                font-size: 70px;
-                color: white;
+                font-size: 60px;
             }
 
             .AnswerBlock1 button{
-                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
                 width: 700px;
                 height: 100%;
                 margin: 2%;
@@ -59,7 +56,6 @@
             }
 
             .AnswerBlock2 button{
-                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
                 width: 700px;
                 height: 100%;
                 margin: 2%;
@@ -87,6 +83,16 @@
             .GameContainer{
                 display: flex;
             }   
+
+            #Continue{
+                display: none;
+                background-color: #4CAF50;
+                color: white;
+                font-size: 32px;
+                width: 300px;
+                height: 100px;
+                margin-top: 5%;
+            }
         </style>
 
         <script>
@@ -219,13 +225,10 @@
 
             function checkAnswer(selectedAnswer) {      // Función para verificar la respuesta
                 var button = document.getElementById("ans0");
-                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
                 var button = document.getElementById("ans1");
-                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
                 var button = document.getElementById("ans2");
-                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
                 var button = document.getElementById("ans3");
-                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+
 
                 //Recupera el color original de los botones
             
@@ -245,8 +248,25 @@
                         document.getElementById("ans3").style.display = "none";
                     }
                 }
+
+                else {
+                    document.getElementById("Question").innerHTML = "¡Incorrecto!"; 
+                    document.getElementById("ans0").style.display = "none";
+                    document.getElementById("ans1").style.display = "none";
+                    document.getElementById("ans2").style.display = "none";
+                    document.getElementById("ans3").style.display = "none";
+                    document.getElementById("Continue").style.display = "block";
+                }
             }
 
+            function continuar(){
+                document.getElementById("ans0").style.display = "block";
+                document.getElementById("ans1").style.display = "block";
+                document.getElementById("ans2").style.display = "block";
+                document.getElementById("ans3").style.display = "block";
+                document.getElementById("Continue").style.display = "none";
+                loadQuestion();
+            }
 
         </script>
     </head>
@@ -257,15 +277,17 @@
                 <div class="QuestionBlock">
                     <p id="Question"></p>
                 </div>
+
+                <button id="Continue" onclick="continuar()">Continuar</button>
         
                 <div class="AnswerBlock1">
-                    <button id="ans0" class="answer"></button>
-                    <button id="ans1" class="answer"></button>
+                    <button id="ans0" class="answer" style="background-color: rgb(226, 27, 60);"></button>
+                    <button id="ans1" class="answer" style="background-color: rgb(216, 158, 2);"></button>
                 </div>
         
                 <div class="AnswerBlock2">
-                    <button id="ans2" class="answer"></button>
-                    <button id="ans3" class="answer"></button>
+                    <button id="ans2" class="answer" style="background-color: rgb(19, 104, 206)"></button>
+                    <button id="ans3" class="answer" style="background-color: rgb(39, 137, 13);"></button>
                 </div>
             </div>
         </div>
