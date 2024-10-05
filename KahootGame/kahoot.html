@@ -93,6 +93,43 @@
                 height: 100px;
                 margin-top: 5%;
             }
+
+            #Continue:hover{
+                transform: scale(1.1);
+                transition: 0.5s;
+            }
+
+            .Score_podium{
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 2%;
+                color: white;
+                font-size: 100px;
+            }
+
+            #Podium_1 {
+                font-size: 120px;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+                background-color: purple;
+                color: gold;
+
+            }
+
+            #Podium_2{
+                font-size: 100px; 
+                background-color: purple;
+                margin-bottom: 20px;
+                color: silver;
+            }
+
+            #Podium_3{
+                font-size: 80px;
+                background-color: purple;
+                color: rgb(226, 66, 0);
+            }
         </style>
 
         <script>
@@ -189,6 +226,8 @@
             ];
             
             var score = 0;
+            var player_1 = 0;
+            var player_2 = 0;
             var Name = localStorage.getItem("Name");
             var QuestionCount = 0;
             var ListNum = [];
@@ -234,7 +273,7 @@
             
                 if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
                     alert("¡Correcto!");
-                    score += 70;
+                    score += 95;
                                      
 
                     if (QuestionCount <= 10) {
@@ -247,6 +286,7 @@
                         document.getElementById("ans1").style.display = "none";
                         document.getElementById("ans2").style.display = "none";
                         document.getElementById("ans3").style.display = "none";
+                        Podium();
                     }
                 }
 
@@ -277,7 +317,21 @@
                     document.getElementById("ans1").style.display = "none";
                     document.getElementById("ans2").style.display = "none";
                     document.getElementById("ans3").style.display = "none";
+                    Podium();
                 }
+            }
+
+            function Podium(){
+                player_1 = Math.floor(Math.random() * 1001);
+                player_2 = Math.floor(Math.random() * 1001);
+                let list_score = [player_1, player_2, score];
+                let list_result = list_score.sort((a, b) => b - a);
+                
+                document.getElementById("Podium_1").innerHTML = "1er lugar: " + list_result[0] + " ❂";
+                document.getElementById("Podium_2").innerHTML = "2do lugar: " + list_result[1] + " ❂";
+                document.getElementById("Podium_3").innerHTML = "3er lugar: " + list_result[2] + " ❂";
+
+                document.querySelector(".Score_podium").style.display = "flex";
             }
 
         </script>
@@ -301,6 +355,12 @@
                     <button id="ans2" class="answer" style="background-color: rgb(19, 104, 206)"></button>
                     <button id="ans3" class="answer" style="background-color: rgb(39, 137, 13);"></button>
                 </div>
+
+            <div class="Score_podium">
+                <p id="Podium_1">sdasd</p>
+                <p id="Podium_2">sdasd</p>
+                <p id="Podium_3">sdasds</p>
+            </div>
             </div>
         </div>
     </body>
