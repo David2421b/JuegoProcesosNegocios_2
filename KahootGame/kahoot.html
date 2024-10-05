@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Kahoot</title>
+
+        <style>
+            body{
+                background-image: url(sources/kahootlog.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .Body{
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .Container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                width: 920px;
+                justify-content: center;
+            }
+
+            .QuestionBlock{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                width: 940px;
+                height: 270px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+                flex: 0 0 100%;
+                margin-top: 7%;
+            }
+
+            .QuestionBlock p{
+                font-size: 70px;
+                color: white;
+            }
+
+            .AnswerBlock1 button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                width: 400px;
+                width: 100%;
+                height: 100%;
+                margin: 2%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 35px;
+                color: white;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            }
+
+            .AnswerBlock2 button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                width: 400px;
+                width: 100%;
+                height: 100%;
+                margin: 2%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 35px;
+                color: white;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            }
+
+            button:hover{
+                transform: scale(1.1);
+                transition: 0.5s;
+            }
+
+            .AnswerBlock1{
+                flex: 0 0 400px;
+            }
+
+            .AnswerBlock2{
+                flex: 0 0 400px;
+            }
+
+            .GameContainer{
+                display: flex;
+            }   
+
+            .ScoreContainer button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                color: white;
+                font-size: 32px;
+                width: 100px;
+                height: 70px;
+                margin: 0% 35px;
+                border-radius: 50%;
+                border-color: white;
+            }
+
+
+        </style>
+
+        <script>
+            var questions = [                       
+                { //pregunta 0
+                    Question: "¿Cuales son los colores primarios?",
+                    Answers: ["Rojo, Azul y Verde", "Amarillo, Azul y Rojo", "Rojo, Azul y Morado", "Rojo, Azul y Naranja"],
+                    CorrectAnswer: 1
+                },
+
+                { //pregunta 1
+                    Question: "¿Cual es el animal mas grande del mundo?",
+                    Answers: ["Elefante","Jirafa", "Tiburon Ballena", "Ballena Azul"],
+                    CorrectAnswer: 3
+                },
+
+                { //pregunta 2
+                    Question: "¿Cual es el pais mas grande del mundo?",
+                    Answers: ["Rusia", "China", "Estados Unidos", "Canada"],
+                    CorrectAnswer: 0
+                },
+
+                { //pregunta 3
+                    Question: "¿Cuál es el océano más grande del mundo?",
+                    Answers: ["Océano Atlántico", "Océano Índico", "Océano Ártico", "Océano Pacífico"],
+                    CorrectAnswer: 3
+                },
+
+                { //pregunta 4
+                    Question: "¿Quién pintó la Mona Lisa?",
+                    Answers: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
+                    CorrectAnswer: 1
+                },
+
+                {  //pregunta 5
+                    Question: "¿Cuál es el planeta más grande del sistema solar?",
+                    Answers: ["Tierra", "Marte", "Júpiter", "Saturno"],
+                    CorrectAnswer: 2
+                },
+
+                { //pregunta 6
+                    Question: "¿Cuál es la capital de Japón?",
+                    Answers: ["Tokio", "Pekín", "Suel", "Bangkok"],
+                    CorrectAnswer: 0
+                },
+
+                { //pregunta 7
+                    Question: "¿En qué año ocurrió el primer alunizaje?",
+                    Answers: ["1965", "1967", "1969", "1971"],
+                    CorrectAnswer: 2
+                },
+
+                { //pregunta 8
+                    Question: "¿Cuál es el metal más abundante en la Tierra?",
+                    Answers: ["Hierro", "Aluminio", "Cobre", "Oro"],
+                    CorrectAnswer: 0
+                },
+
+                { //pregunta 9
+                    Question: "¿Quién escribió 'Don Quijote de la Mancha'?",
+                    Answers: ["Gabriel García Márquez", "Miguel de Cervantes", "Jorge Luis Borges", "Federico García Lorca"],
+                    CorrectAnswer: 1
+                },
+
+                { //pregunta 10
+                    Question: "¿Cuál es el río más largo del mundo?",
+                    Answers: ["Amazonas", "Nilo", "Yangtsé", "Misisipi"],
+                    CorrectAnswer: 1
+                },
+
+                { //pregunta 11
+                    Question: "¿Cuál es el idioma más hablado en el mundo?",
+                    Answers: ["Español", "Inglés", "Mandarín", "Hindú"],
+                    CorrectAnswer: 2
+                },
+
+                { //pregunta 12
+                    Question: "¿En qué continente se encuentra el desierto del Sahara?",
+                    Answers: ["Asia", "África", "América del Sur", "Oceanía"],
+                    CorrectAnswer: 1
+                },
+
+                { //pregunta 13
+                    Question: "¿Cuál es el país con más habitantes del mundo?",
+                    Answers: ["China", "Estados Unidos", "India", "Indonesia"],
+                    CorrectAnswer: 0 
+                },
+
+                {  //pregunta 14
+                    Question: "¿En qué año cayó el Muro de Berlín?",
+                    Answers: ["1991", "1989", "1993", "1987"],
+                    CorrectAnswer: 1 
+                },
+
+            ]
+
+            var Name = localStorage.getItem("Name");
+            var QuestionCount = 0;
+            var ListNum = [];
+            var RandomIndex = Math.floor(Math.random() * questions.length);
+
+            window.onload = loadQuestion;
+
+            function RandomQuestion(){
+                ListNum.push(RandomIndex);
+                for (var i = 0; i < ListNum.length; i++){
+                    if (RandomIndex === ListNum[i]){
+                        RandomIndex = Math.floor(Math.random() * questions.length);
+                        i = 0;
+                    }
+                }
+                return RandomIndex;
+            }
+
+            function loadQuestion () {      // Función para cargar la pregunta
+                QuestionIndex = RandomQuestion();
+                QuestionCount ++
+                if (Name == "" || Name == null) {
+                    alert("Por favor ingrese su nombre");
+                    window.location.href = "Start.html";
+                }
+                var questionData = questions[QuestionIndex];  //Obtener la pregunta del indice actual
+                document.getElementById("Question").innerText = Name + ", " + questionData.Question; //Mostrar la pregunta en el HTML
+                const answerButtons = document.querySelectorAll('.answer');
+                answerButtons.forEach((button, index) => {
+                    button.innerText = questionData.Answers[index]; // Actualizar el texto de cada botón con las respuestas
+                    button.setAttribute("onclick", `checkAnswer(${index})`);
+                });
+            }
+
+            function checkAnswer(selectedAnswer) {      // Función para verificar la respuesta
+                var button = document.getElementById("ans0");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+                var button = document.getElementById("ans1");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+                var button = document.getElementById("ans2");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+                var button = document.getElementById("ans3");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+
+                //Recupera el color original de los botones
+            
+                if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
+                    alert("¡Correcto!"); // Mostrar un mensaje si es correcto
+                                     
+
+                    if (QuestionCount <= 10) {
+                        loadQuestion(); // Cargar la siguiente pregunta si hay más
+                    } 
+
+                    else {
+                        document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Fibonacci + "$"; // Mostrar un mensaje si se terminan las preguntas
+                        document.getElementById("ans0").style.display = "none";/*Ocultar los botones de respuesta*/
+                        document.getElementById("ans1").style.display = "none";
+                        document.getElementById("ans2").style.display = "none";
+                        document.getElementById("ans3").style.display = "none";
+                    }
+                }
+            }
+
+
+        </script>
+    </head>
+
+    <body>
+        </div>
+
+        <div class="Body">
+            <div class="Container">
+                <div class="QuestionBlock">
+                    <p id="Question"></p>
+                </div>
+        
+                <div class="AnswerBlock1">
+                    <button id="ans0" class="answer"></button>
+                    <button id="ans1" class="answer"></button>
+                </div>
+        
+                <div class="AnswerBlock2">
+                    <button id="ans2" class="answer"></button>
+                    <button id="ans3" class="answer"></button>
+                </div>
+            </div>
+                <div class="SiNo">
+                    <button id="Yes" onclick="AnswerYes()">Si</button>
+                    <button id="No" onclick="AnswerNo()">No</button>
+                </div>
+        </div>
+    </body>
+</html>
