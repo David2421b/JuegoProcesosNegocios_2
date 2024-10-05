@@ -187,8 +187,8 @@
                     CorrectAnswer: 1
                 },
             ];
-
-
+            
+            var score = 0;
             var Name = localStorage.getItem("Name");
             var QuestionCount = 0;
             var ListNum = [];
@@ -233,15 +233,16 @@
                 //Recupera el color original de los botones
             
                 if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
-                    alert("¡Correcto!"); // Mostrar un mensaje si es correcto
+                    alert("¡Correcto!");
+                    score += 70;
                                      
 
                     if (QuestionCount <= 10) {
-                        loadQuestion(); // Cargar la siguiente pregunta si hay más
+                        loadQuestion(); 
                     } 
 
                     else {
-                        document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Fibonacci + "$"; // Mostrar un mensaje si se terminan las preguntas
+                        document.getElementById("Question").innerHTML = "¡Felicidades!, Tu úntaje es: " + score + " ❂"; // Mostrar un mensaje si se terminan las preguntas
                         document.getElementById("ans0").style.display = "none";/*Ocultar los botones de respuesta*/
                         document.getElementById("ans1").style.display = "none";
                         document.getElementById("ans2").style.display = "none";
@@ -265,7 +266,10 @@
                 document.getElementById("ans2").style.display = "block";
                 document.getElementById("ans3").style.display = "block";
                 document.getElementById("Continue").style.display = "none";
-                loadQuestion();
+
+                if (QuestionCount <= 10) {
+                    loadQuestion();
+                }
             }
 
         </script>
