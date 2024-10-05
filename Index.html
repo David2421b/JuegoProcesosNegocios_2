@@ -8,6 +8,7 @@
                 background-image: url(KahootGame/sources/kahootlog.jpg);
                 background-repeat: no-repeat;
                 background-size: cover;
+                background-attachment: fixed;
             }
 
             .Main{
@@ -18,7 +19,7 @@
             }
 
             .UsuaContainer{
-                background: linear-gradient(to right, rgb(12, 12, 113), rgb(42, 42, 161));
+                backdrop-filter: blur(5px);
                 display: flex;
                 padding: 20px;
                 justify-content: center;
@@ -49,12 +50,11 @@
             }
 
             .Container button{
-                background: linear-gradient(to right, rgb(12, 12, 113), rgb(42, 42, 161));
+                background-color: #4CAF50;
                 color: white;
                 font-size: 32px;
-                width: 500px;
+                width: 300px;
                 height: 100px;
-                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             }
 
             button:hover{
